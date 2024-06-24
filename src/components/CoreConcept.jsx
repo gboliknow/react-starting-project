@@ -1,5 +1,3 @@
-
-
 export function CoreConcept({image, title, description}) {
     return (
       <li>
