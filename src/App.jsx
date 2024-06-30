@@ -5,6 +5,9 @@ import { Header } from './components/Header/Header.jsx';
 import { CoreConcept } from './components/Coreconcept.jsx';
 import { TabButton } from './components/TabButton.jsx'
 import { EXAMPLES } from './data.js';
+// import { Examples } from './components/Examples.jsx';
+import Tabs from './components/Tabs.jsx';
+
 
 
 
@@ -30,14 +33,19 @@ function App() {
             ))}
           </ul>
         </section>
+
         <section id='examples'>
-          <h2>Examples</h2>
-          <menu>
-            <TabButton isSelected={selectedTopic == 'components'} onSelect={() => handleSelect('components')}>Components</TabButton>
+        <Tabs 
+        buttons={
+          <>
+          <TabButton isSelected={selectedTopic == 'components'} onSelect={() => handleSelect('components')}>Components</TabButton>
             <TabButton isSelected={selectedTopic == 'jsx'} onSelect={() => handleSelect('jsx')}>JSX</TabButton>
             <TabButton isSelected={selectedTopic == 'props'} onSelect={() => handleSelect('props')}>Props</TabButton>
             <TabButton isSelected={selectedTopic == 'state'} onSelect={() => handleSelect('state')}>State</TabButton>
-          </menu>
+          </>
+        }> 
+        {
+          <>    <h2>Examples</h2>
           {selectedTopic ? <div id="tab-content">
 
             <h3>{EXAMPLES[selectedTopic].title}</h3>
@@ -49,9 +57,12 @@ function App() {
             </pre>
 
           </div> : <p> Please Select a topic</p>}
-
+</>
+        }
+        </Tabs>
+      
         </section>
-
+      
       </main>
     </div>
   );
